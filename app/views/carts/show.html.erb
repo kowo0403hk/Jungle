@@ -1,10 +1,27 @@
 <section class="cart-show">
-
   <header class="page-header">
     <h1>My Cart</h1>
   </header>
 
   <div class="panel panel-default items">
+  <%
+=begin%>
+  we use the enchaned_cart.empty here because @enhanced_cart has not yet been initialized by enhanced_cart method
+<%
+=end%>
+    <% if enhanced_cart.empty? %>
+    <%
+=begin%>
+  The form_tag products_path,method: :GET below equals to 
+  form_tag({products_path,method: :GET}) 
+  we pass a hash item to the form_tag to perform GET method and path
+<%
+=end%>
+    <%= form_tag products_path,method: :GET do %> 
+    <p class="alert alert-warning">Your cart is empty, please go check out our plants.</p>
+      <input type="submit" class="btn btn-primary" value="Back">
+      <% end %>
+    <% else %>
     <table class="table table-bordered">
       <thead>
         <tr>
@@ -31,22 +48,8 @@
       </tfoot>
     </table>
   </div>
-
   <div class="row">
     <div class="col-xs-12">
-    <% if cart.empty? %>
-    <%
-=begin%>
-  The form_tag products_path,method: :GET below equals to 
-  form_tag({products_path,method: :GET}) 
-  we pass a hash item to the form_tag to perform GET method and path
-<%
-=end%>
-    <%= form_tag products_path,method: :GET do %> 
-    <p class="alert alert-warning">Your cart is empty, please go check out our plants.</p>
-      <input type="submit" class="btn btn-primary" value="Back">
-      <% end %>
-    <% else %>
       <%= form_tag orders_path do %>
         <script
           src="https://checkout.stripe.com/checkout.js" class="stripe-button"
