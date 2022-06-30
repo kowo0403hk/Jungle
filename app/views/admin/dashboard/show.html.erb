@@ -1,2 +1,29 @@
-<h1>Admin::Dashboard#show</h1>
-<p>Find me in app/views/admin/dashboard/show.html.erb</p>
+<section>
+<h1>Dashboard</h1>
+  <div class="panel panel-default items">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th colspan="3"></th>
+          <th colspan="2">Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @all_count.each do |count| %>
+        <%= render 'count', count: %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_tag admin_products_path,method: :GET do %> 
+      <input type="submit" class="btn btn-lg btn-primary" value="See Products">
+      <% end %>
+      <br>
+      <%= form_tag root_path,method: :GET do %> 
+      <input type="submit" class="btn btn-lg btn-primary" value="Back">
+      <% end %>
+    </div>
+  </div>
+</section>
