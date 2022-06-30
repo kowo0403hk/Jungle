@@ -2,7 +2,9 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @items = Product.select("products.name, products.description, products.image, l.quantity, products.price_cents").joins("INNER JOIN line_items l ON l.product_id = products.id").where(["order_id = ?", params[:id]])
+    @items = Product.select("products.id, products.name, products.description, products.image, l.quantity, products.price_cents").joins("INNER JOIN line_items l ON l.product_id = products.id").where(["order_id = ?", params[:id]])
+    # products.id is needed because the product_image_uploader will use the id to locate the product image folder, or image_tag would do the work?
+    @line_total = LineItem.where(["order_id = ?", params[:id]]).sum(:total_price_cents)
   end
 
   def create
