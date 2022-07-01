@@ -1,0 +1,32 @@
+<section class="admin-sales-index">
+
+  <header class="page-header">
+    <h1>Admin &raquo; All sales</h1>
+  </header>
+
+  <div class="well">
+    <%= link_to '+ New Sale', [:new, :admin, :sale], class: 'btn btn-info' %>
+  </div>
+
+  <div class="panel panel-default sales">
+
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+          <th>Percent Off</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <%= render @sales %>
+        <%# be careful of what is being passed in and the default rendering. If the passed in data is products table data but the render path is not specified, Rails will look for actual _product partial from ALL the files, while your layout might be messed up in this way. To avoid this, you have to either explicity point out where the rendering partial is, or pass in data taht is about sales table.%>
+      </tbody>
+    </table>
+
+  </div>
+
+</section>
