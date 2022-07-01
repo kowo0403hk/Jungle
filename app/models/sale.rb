@@ -1,4 +1,10 @@
 class Sale < ApplicationRecord
+
+  
+  def self.active # class method, it is a SQL string being called by the sales_helper
+    where("sales.starts_on <= ? AND sales.ends_on >= ?", Date.current, Date.current)
+  end
+
   def finished?
     ends_on < Date.current
   end
