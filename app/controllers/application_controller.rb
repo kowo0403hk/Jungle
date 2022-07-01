@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
   
   protect_from_forgery with: :exception
 
+  def current_user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+  end
+  helper_method :current_user
+  # The method helper_method is to explicitly share some methods defined in the controller to make them available for the view. This is used for any method that you need to access from both controllers and helpers/views
+
+  def authorize
+    redirect_to '/login' unless current_user
+  end
+
   private
 
   def cart
