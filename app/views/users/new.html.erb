@@ -1,0 +1,17 @@
+<h1>Signup!</h1>
+
+<%
+=begin%>
+  The following form will hit the /users route with a POST method, which will trigger the users#create method in the controller.
+<%
+=end%>
+
+<%= form_for :user, url: '/users' do |f| %>
+
+  Name: <%= f.text_field :name %>
+  Email: <%= f.text_field :email %>
+  Password: <%= f.password_field :password %>
+  Password Confirmation: <%= f.password_field :password_confirmation %>
+  <%= f.submit "Submit" %>
+
+<% end %>

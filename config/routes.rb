@@ -12,6 +12,8 @@ Rails.application.routes.draw do
 
   resources :orders, only: [:create, :show]
 
+  resources :users
+
   resources :about_us, only: [:index]
 
   # setting up namespcing for admin routes here
