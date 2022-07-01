@@ -74,6 +74,12 @@
           >
             User
           </a>
+
+          <%
+=begin%>
+The next block of code is to check if a user is logged in, then render different options (login/reigster vs. logout)  
+<%
+=end%>
           <% if current_user %>
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><%= link_to 'Logout', '/logout', class: "nav-link" %></li>
