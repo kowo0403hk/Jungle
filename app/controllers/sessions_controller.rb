@@ -5,11 +5,8 @@ class SessionsController < ApplicationController
   end
 
   def create
-    user = User.find_by_email(params[:email])
-
     # the authenticate method is from the bcrypt library
-    if user && user.authenticate(params[:password])
-
+    if user = User.authenticate_with_credentials(params[:email], params[:password])
       #if password matches, then we use assign cookies to this user and login him/her in
       session[:user_id] = user.id
       redirect_to '/'
