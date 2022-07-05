@@ -91,7 +91,7 @@ The next block of code is to check if a user is logged in, then render different
             </ul>
         </li>
           <% end %>
-        <li class="nav-item end-0">
+        <li class="nav-item end-0" data-id="my_cart">
           <%= link_to cart_path, class: "nav-link " do %> <%= fa_icon "shopping-cart" %>
           My Cart (<%= cart.size %>) <% end %>
         </li>
