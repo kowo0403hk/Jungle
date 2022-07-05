@@ -3,9 +3,10 @@ class User < ApplicationRecord
   has_secure_password
 
   def self.authenticate_with_credentials(email, password)
-    user = User.find_by_email(email)
-    if user && user.authenticate(password)
-      user
+    processed_email = email.delete(" ").downcase
+    @user = User.find_by_email(processed_email)
+    if @user && @user.authenticate(password)
+      @user
     else
       nil
     end
