@@ -17,5 +17,14 @@ class User < ApplicationRecord
   validates :email, :first_name, :last_name, presence: true
   validates :email, uniqueness: {case_sensitive: false}
   validates :password, :password_confirmation, length: {minimum: 3}
+
+  # rails 6.1.5 does not support comparison validator method, so we have to create a custom validator
+  validate :password_equals_password_confirmation? 
+
+  def password_equals_password_confirmation?
+    if password != password_confirmation
+      errors.add("Password and password confirmation", "do not match")
+    end
+  end
 end
 
