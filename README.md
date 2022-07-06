@@ -29,3 +29,8 @@ More information in their docs: <https://stripe.com/docs/testing#cards>
 - Bootstrap 5
 - PostgreSQL 9.x
 - Stripe
+
+## Testing Dependencies
+
+- Cypress
+- Rspec
