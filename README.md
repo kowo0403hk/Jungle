@@ -1,6 +1,6 @@
 # Jungle
 
-A mini e-commerce application built with Rails 6.1 for purposes of teaching Rails by example. Baisc http authentication is implemented through out all the admin controllers. Users can sign up account and login with their email address, while their password is hashed and stored in the databse by bcrypt.
+A mini e-commerce application built with Rails 6.1. Basic http authentication is implemented through out all the admin controllers. Users can sign up account and login with their email address, while their password is hashed and stored in the database by Bcrypt.
 
 This application also utilizes Stripe API to provide quasi-realistic transaction experience to users.
 
